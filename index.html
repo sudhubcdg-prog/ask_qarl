@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUD Aérien - Télécharger</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+
+    background: radial-gradient(circle at center, #4b1f7a 0%, #120020 100%);
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+}
+
+/* Text */
+h1 {
+    font-size: 18px;
+    font-weight: normal;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Agent animation */
+.agent {
+    width: 180px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Floating effect */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Pointing animation */
+.agent {
+    animation: float 3s ease-in-out infinite, point 1.5s infinite;
+}
+
+@keyframes point {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* QR section */
+.qr-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* QR style */
+.qr-box {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.qr-box:hover {
+    transform: scale(1.05);
+}
+
+.qr-box img {
+    width: 110px;
+    height: 110px;
+}
+
+/* Download buttons */
+.download-links {
+    margin-top: 20px;
+}
+
+.download-links a {
+    display: inline-block;
+    margin: 8px;
+    padding: 10px 20px;
+    background: #ff3df5;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.download-links a:hover {
+    background: #ff6cf9;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .qr-container {
+        flex-direction: column;
+    }
+
+    .agent {
+        width: 140px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        Bienvenus chez SUD Aérien.<br>
+        Pour t'inscrire, télécharge notre application en cliquant sur le lien correspondant
+    </h1>
+
+    <!-- Animated agent -->
+    <img src="agent.png" class="agent" alt="Agent">
+
+    <!-- QR Codes -->
+    <div class="qr-container">
+        <a href="https://play.google.com/store/apps/details?id=com.mobile.sudaerien" class="qr-box">
+            <img src="qr1.png" alt="Android QR">
+        </a>
+
+        <a href="https://apps.apple.com/fr/app/sud-a%C3%A9rien-solidaires/id6449486227?l=en-GB" class="qr-box">
+            <img src="qr2.png" alt="iOS QR">
+        </a>
+    </div>
+
+    <!-- Download Buttons -->
+    <div class="download-links">
+        <a href="https://play.google.com/store/apps/details?id=com.mobile.sudaerien">📱 Télécharger sur Android</a>
+        <a href="https://apps.apple.com/fr/app/sud-a%C3%A9rien-solidaires/id6449486227?l=en-GB">🍎 Télécharger sur iPhone</a>
+    </div>
+
+</div>
+
+</body>
+</html>
