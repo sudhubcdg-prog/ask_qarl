@@ -3,108 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUD Aérien - Télécharger</title>
+<title>SUD Aérien - Qarl</title>
+
+<link rel="manifest" href="manifest.json">
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: white;
-    text-align: center;
-
-    background: radial-gradient(circle at center, #4b1f7a 0%, #120020 100%);
+    background: radial-gradient(circle at center, #5a2a8a 0%, #120020 100%);
 }
 
-/* Layout */
-.container {
-    display: flex;
-    flex-direction: column;
+/* SCROLLING TITLE */
+.title {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scroll-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 32px;
+    animation: scroll-left 18s linear infinite;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* GRID */
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    padding: 30px 15px;
+    height: 100vh;
+    padding: 20px;
 }
 
-/* Text */
-h1 {
-    font-size: 18px;
-    font-weight: normal;
-    max-width: 600px;
-    line-height: 1.6;
-    margin-bottom: 25px;
+/* LEFT */
+.left {
+    text-align: center;
+    font-size: 12px;
 }
 
-/* Agent animation */
+.left img {
+    width: 90px;
+    margin: 10px;
+}
+
+/* CENTER LOGO (SWING) */
+.center img {
+    width: 250px;
+    animation: swing 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 0 15px #00f0ff);
+}
+
+@keyframes swing {
+    0% { transform: rotateY(-15deg); }
+    50% { transform: rotateY(15deg); }
+    100% { transform: rotateY(-15deg); }
+}
+
+/* RIGHT */
+.right {
+    text-align: center;
+}
+
+/* AGENT FLOAT */
 .agent {
     width: 180px;
     animation: float 3s ease-in-out infinite;
 }
 
-/* Floating effect */
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
-/* Pointing animation */
-.agent {
-    animation: float 3s ease-in-out infinite, point 1.5s infinite;
+/* ARROW */
+.arrow {
+    font-size: 35px;
+    animation: bounce 1s infinite;
 }
 
-@keyframes point {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
-/* QR section */
+/* QR */
 .qr-container {
     display: flex;
-    gap: 20px;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
 }
 
-/* QR style */
 .qr-box {
     background: white;
-    padding: 10px;
+    padding: 8px;
     border-radius: 10px;
-    transition: transform 0.2s;
+    box-shadow: 0 0 20px rgba(255,0,255,0.7);
+    transition: 0.3s;
 }
 
 .qr-box:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .qr-box img {
-    width: 110px;
-    height: 110px;
+    width: 90px;
 }
 
-/* Download buttons */
-.download-links {
-    margin-top: 20px;
-}
-
+/* BUTTONS */
 .download-links a {
     display: inline-block;
-    margin: 8px;
-    padding: 10px 20px;
-    background: #ff3df5;
+    margin: 6px;
+    padding: 10px 18px;
+    background: linear-gradient(45deg, #ff3df5, #7a5cff);
+    border-radius: 25px;
     color: white;
     text-decoration: none;
-    border-radius: 25px;
-    font-size: 14px;
-    transition: background 0.3s;
+    font-size: 12px;
 }
 
-.download-links a:hover {
-    background: #ff6cf9;
-}
+/* MOBILE */
+@media (max-width: 900px) {
+    .main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        height: auto;
+    }
 
-/* Mobile */
-@media (max-width: 600px) {
-    .qr-container {
-        flex-direction: column;
+    .center img {
+        width: 180px;
     }
 
     .agent {
@@ -116,34 +154,75 @@ h1 {
 
 <body>
 
-<div class="container">
+<!-- SCROLLING TITLE -->
+<div class="title">
+    <div class="scroll-text">
+        Bienvenue sur la page de Qarl, votre referent virtuel de SUD Aérien Exploitation HUB CDG
+    </div>
+</div>
 
-    <h1>
-        Bienvenus chez SUD Aérien.<br>
-        Pour t'inscrire, télécharge notre application en cliquant sur le lien correspondant
-    </h1>
+<div class="main">
 
-    <!-- Animated agent -->
-    <img src="agent.png" class="agent" alt="Agent">
+    <!-- LEFT -->
+    <div class="left">
+        <p>
+        Des Questions sur le syndicat, tes droits, la grève ...<br>
+        Demande à Qarl en cliquant ci-dessous:
+        </p>
 
-    <!-- QR Codes -->
-    <div class="qr-container">
-        <a href="https://play.google.com/store/apps/details?id=com.mobile.sudaerien" class="qr-box">
-            <img src="qr1.png" alt="Android QR">
-        </a>
+        <div>
+            <a href="#" class="qr-box">
+            <a href="https://chat.whatsapp.com/HDOO7wPeo642lS7hQUFr8G?mode=gi_t" class="qr-box">
+                <img src="qr-left1.png">
+            </a>
 
-        <a href="https://apps.apple.com/fr/app/sud-a%C3%A9rien-solidaires/id6449486227?l=en-GB" class="qr-box">
-            <img src="qr2.png" alt="iOS QR">
-        </a>
+            <a href="#" class="qr-box">
+            <a href="https://t.me/+d5HJf2_oJRozMWY8" class="qr-box">
+                <img src="qr-left2.png">
+            </a>
+        </div>
     </div>
 
-    <!-- Download Buttons -->
-    <div class="download-links">
-        <a href="https://play.google.com/store/apps/details?id=com.mobile.sudaerien">📱 Télécharger sur Android</a>
-        <a href="https://apps.apple.com/fr/app/sud-a%C3%A9rien-solidaires/id6449486227?l=en-GB">🍎 Télécharger sur iPhone</a>
+    <!-- CENTER -->
+    <div class="center" style="text-align:center;">
+        <img src="logo.png">
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+        <img src="agent.png" class="agent">
+
+        
+
+        <p>
+        Pour adherer à la resistance SUD télécharge l'appli en cliquant sur le QR code correspondant à ton smartphone
+        </p>
+
+        <div class="qr-container">
+            <a href="https://play.google.com/store/apps/details?id=com.mobile.sudaerien" class="qr-box">
+                <img src="qr-android.png">
+            </a>
+
+            <a href="https://apps.apple.com/fr/app/sud-a%C3%A9rien-solidaires/id6449486227?l=en-GB" class="qr-box">
+                <img src="qr-ios.png">
+            </a>
+        </div>
+
+        <div class="download-links">
+            <a href="https://play.google.com/store/apps/details?id=com.mobile.sudaerien">Android</a>
+            <a href="https://apps.apple.com/fr/app/sud-a%C3%A9rien-solidaires/id6449486227?l=en-GB">iPhone</a>
+        </div>
+
     </div>
 
 </div>
+
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+}
+</script>
 
 </body>
 </html>
